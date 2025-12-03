@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fitiki – Covoiturage simple et malin</title>
+  <meta name="description" content="Fitiki, la plateforme de covoiturage simple, sécurisée et économique pour vos trajets du quotidien." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="fitriqi.png" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #1f2933; background: #f5f7fa; }
+    a { text-decoration: none; }
+    header, section, footer { padding: 40px 20px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    /* HEADER / HERO */
+    .navbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 20px 0;
+    }
+    .logo { 
+      font-weight: 800; font-size: 1.4rem; color: #2563eb; 
+      display: flex; align-items: center; gap: 10px;
+    }
+    .logo img { height: 40px; width: auto; }
+    .nav-links a { margin-left: 20px; color: #4b5563; font-size: 0.95rem; }
+    .nav-links a:hover { color: #111827; }
+
+    .hero {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      padding-top: 40px;
+    }
+    .hero-text { flex: 1 1 350px; padding-right: 20px; }
+    .hero-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; color: #111827; }
+    .hero-subtitle { font-size: 1.1rem; margin-bottom: 24px; color: #4b5563; }
+    .hero-cta {
+      display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;
+    }
+    .btn-primary {
+      background: #2563eb; color: white; padding: 12px 22px; border-radius: 999px;
+      font-weight: 600; font-size: 0.98rem;
+    }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-secondary {
+      border: 1px solid #d1d5db; padding: 12px 22px; border-radius: 999px;
+      font-weight: 500; color: #111827; background: white;
+    }
+    .btn-secondary:hover { background: #f3f4f6; }
+
+    .hero-note { font-size: 0.9rem; color: #6b7280; }
+
+    .hero-illustration {
+      flex: 1 1 320px; text-align: center; margin-top: 30px;
+    }
+    .hero-card {
+      display: inline-block; padding: 24px 20px; border-radius: 24px;
+      background: white; box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+      max-width: 360px; text-align: left;
+    }
+    .hero-card-title { font-weight: 700; margin-bottom: 10px; }
+    .hero-card-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 8px; font-size: 0.9rem;
+    }
+    .badge {
+      display: inline-block; padding: 4px 10px; border-radius: 999px;
+      background: #e0f2fe; color: #0369a1; font-size: 0.75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 12px;
+    }
+
+    /* SECTIONS */
+    .section-title {
+      text-align: center; font-size: 1.8rem; font-weight: 800; margin-bottom: 16px; color: #111827;
+    }
+    .section-subtitle {
+      text-align: center; max-width: 650px; margin: 0 auto 32px; color: #4b5563;
+    }
+
+    .features {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: white; border-radius: 18px; padding: 20px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    }
+    .feature-title { font-weight: 700; margin-bottom: 8px; }
+    .feature-text { font-size: 0.95rem; color: #4b5563; }
+
+    .steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .step {
+      background: white; border-radius: 16px; padding: 18px;
+      border: 1px solid #e5e7eb;
+    }
+    .step-number {
+      width: 28px; height: 28px; border-radius: 999px; background: #2563eb; color: white;
+      display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .step-title { font-weight: 700; margin-bottom: 6px; }
+    .step-text { font-size: 0.92rem; color: #4b5563; }
+
+    /* FAQ et FOOTER */
+    .faq-item + .faq-item { margin-top: 16px; }
+    .faq-question { font-weight: 600; margin-bottom: 4px; }
+    .faq-answer { font-size: 0.95rem; color: #4b5563; }
+
+    footer {
+      background: #111827; color: #9ca3af; padding: 24px 20px;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+      font-size: 0.85rem;
+    }
+    .footer-inner a { color: #e5e7eb; margin-left: 10px; }
+
+    @media (max-width: 640px) {
+      .hero-title { font-size: 2rem; }
+      .navbar { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="navbar container">
+      <div class="logo">
+        <img src="fitriqi.png" alt="Fitiki Logo" />
+        <span>Fitiki</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#features">Fonctionnalités</a>
+        <a href="#how-it-works">Comment ça marche</a>
+        <a href="#mission">Notre mission</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+
+    <!-- HERO -->
+    <div class="container hero">
+      <div class="hero-text">
+        <div class="badge">Nouveau • Covoiturage du quotidien</div>
+        <h1 class="hero-title">Le covoiturage simple pour vos trajets de tous les jours.</h1>
+        <p class="hero-subtitle">
+          Fitiki connecte conducteurs et passagers qui font les mêmes trajets
+          pour réduire les coûts, le temps perdu dans les bouchons et l’impact sur l’environnement.
+        </p>
+        <div class="hero-cta">
+          <a href="#mission" class="btn-primary">Notre mission</a>
+          <a href="#how-it-works" class="btn-secondary">Voir comment ça marche</a>
+        </div>
+        <p class="hero-note">
+          Gratuit à l’inscription • Paiement sécurisé • Notation des conducteurs et passagers
+        </p>
+      </div>
+
+      
+    </div>
+  </header>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <h2 class="section-title">Pourquoi choisir Fitiki ?</h2>
+      <p class="section-subtitle">
+        Une solution pensée pour les trajets récurrents (boulot, études, sport),
+        avec une expérience fluide pour les conducteurs comme pour les passagers.
+      </p>
+
+      <div class="features">
+        <div class="feature-card">
+          <h3 class="feature-title">Économies au quotidien</h3>
+          <p class="feature-text">
+            Partagez les frais de carburant et de péage avec vos passagers.
+            Fitiki vous aide à rentabiliser vos trajets réguliers sans prise de tête.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-title">Sécurité et confiance</h3>
+          <p class="feature-text">
+            Profils vérifiés, avis et notes après chaque trajet, messagerie intégrée : tout est fait
+            pour créer une communauté de confiance.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-title">Flexibilité totale</h3>
+          <p class="feature-text">
+            Proposez un trajet en quelques secondes, modifiez vos horaires, choisissez
+            vos points de rencontre et gérez vos réservations facilement.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works">
+    <div class="container">
+      <h2 class="section-title">Comment ça marche ?</h2>
+      <p class="section-subtitle">
+        Quelques étapes suffisent pour organiser vos covoiturages et optimiser vos trajets.
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3 class="step-title">Créez votre compte</h3>
+          <p class="step-text">
+            Inscrivez-vous gratuitement, complétez votre profil et ajoutez vos trajets réguliers.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3 class="step-title">Publiez ou recherchez un trajet</h3>
+          <p class="step-text">
+            Conducteur : proposez vos places disponibles. Passager : trouvez un trajet qui
+            correspond à vos horaires.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3 class="step-title">Voyagez, notez, recommencez</h3>
+          <p class="step-text">
+            Payez en toute sécurité, laissez un avis et construisez votre réputation
+            au sein de la communauté Fitiki.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTRE MISSION -->
+  <section id="mission">
+    <div class="container">
+      <h2 class="section-title">Notre mission</h2>
+      <p class="section-subtitle">
+        Chez Fitiki, notre mission est de rendre le covoiturage du quotidien simple, accessible
+        et fiable pour tout le monde. Nous croyons qu'en partageant les trajets, on peut
+        réduire les coûts, le trafic et l'empreinte carbone de nos villes.
+      </p>
+
+      <div class="features">
+        <div class="feature-card">
+          <h3 class="feature-title">Moins de voitures, plus de liens</h3>
+          <p class="feature-text">
+            En connectant les personnes qui font les mêmes trajets, Fitiki crée des habitudes
+            de mobilité plus intelligentes et renforce les liens entre voisins, collègues et étudiants.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3 class="feature-title">Un impact positif concret</h3>
+          <p class="feature-text">
+            Chaque trajet partagé, c'est moins de CO₂ émis, moins de places de parking occupées
+            et une meilleure qualité de vie pour tous. Notre objectif : faire du covoiturage un réflexe
+            pour les trajets récurrents.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3 class="feature-title">Une expérience fluide</h3>
+          <p class="feature-text">
+            Nous concevons Fitiki pour qu'il soit simple à utiliser, transparent sur les prix
+            et centré sur la confiance entre conducteurs et passagers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title">Questions fréquentes</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">Fitiki est‑il gratuit ?</div>
+        <div class="faq-answer">
+          L’inscription est gratuite. Les passagers participent aux frais du trajet et Fitiki
+          applique une petite commission pour couvrir les frais de service.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Comment se passent les paiements ?</div>
+        <div class="faq-answer">
+          Les paiements se font de manière sécurisée via l’app (carte bancaire, etc.), afin
+          de simplifier les échanges entre conducteurs et passagers.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Puis‑je utiliser Fitiki pour le travail ?</div>
+        <div class="faq-answer">
+          Oui, Fitiki est idéal pour les trajets domicile‑travail, mais également pour les campus
+          universitaires, les clubs de sport, les évènements, etc.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Fitiki. Tous droits réservés.</div>
+      <div>
+        <a href="#features">Fonctionnalités</a>
+        <a href="#faq">FAQ</a>
+        <a href="conditions-generales.html">CGU</a>
+        <a href="politique-confidentialite.html">Confidentialité</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Met l’année actuelle dans le footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
